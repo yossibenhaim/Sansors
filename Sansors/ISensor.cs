@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sensors
 {
-    internal class ISensor
+    internal interface ISensor
     {
-        public string name;
+        string name { get; set; }
 
-        public bool active;
+        bool active { get; set; }
 
     }
 }

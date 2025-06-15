@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sensors
 {
-    internal class Menager
+    internal class Manager
     {
         List<ISensor> sensors = new List<ISensor>();
     }
