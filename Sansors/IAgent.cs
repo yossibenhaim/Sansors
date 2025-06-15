@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Sensors
 {
-    internal class Program
+    internal interface IAgent
     {
-        static void Main(string[] args)
-        {
-        }
+        string name { get; set; }
+
+        List<string> sensor { get; set; }
+
     }
 }
