@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sensors
 {
-    internal class IAgent
+    internal interface IAgent
     {
-        public string name;
+        string name { get; set; }
 
-        public List<string> sensor;
+        List<string> sensor { get; set; }
 
     }
 }
