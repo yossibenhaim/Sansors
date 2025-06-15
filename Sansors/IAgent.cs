@@ -10,7 +10,7 @@ namespace Sensors
     {
         string name { get; set; }
 
-        Dictionary<string, bool> sensor { get; set; }
+        List<string> sensor { get; set; }
 
     }
 }
