@@ -8,5 +8,6 @@ namespace Sensors
 {
     internal class Menager
     {
+        List<ISensor> sensors = new List<ISensor>();
     }
 }
