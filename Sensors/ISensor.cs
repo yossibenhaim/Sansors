@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,9 @@ namespace Sensors
 {
     internal interface ISensor
     {
-        string name { get; set; }
+        string name { get; }
 
-        bool active { get; set; }
+        bool active { get; }
 
     }
 }
