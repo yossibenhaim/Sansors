@@ -14,7 +14,8 @@ namespace Sensors
             bool run = true;
             while (run)
             {
-                Console.WriteLine("enter a number");
+                Printer.PrintStartMenu();
+          
                 string cohice = Console.ReadLine();
 
                 switch (cohice)
