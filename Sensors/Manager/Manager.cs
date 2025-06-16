@@ -17,5 +17,8 @@ namespace Sensors
                 agent.sensorsDict[sensorName]--;
             }
         }
+        public void CreatShowOfSensor()
+        {
+        }
     }
 }
