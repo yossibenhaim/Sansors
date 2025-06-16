@@ -43,14 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AudioSensor.cs" />
-    <Compile Include="IAgent.cs" />
-    <Compile Include="ISensor.cs" />
-    <Compile Include="Menager.cs" />
-    <Compile Include="Menu.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Agents\Agent.cs" />
+    <Compile Include="Manager\Printer.cs" />
+    <Compile Include="Sensors\AudioSensor.cs" />
+    <Compile Include="Agents\FootAgent.cs" />
+    <Compile Include="Manager\HelpManager.cs" />
+    <Compile Include="interface\IAgent.cs" />
+    <Compile Include="interface\ISensor.cs" />
+    <Compile Include="Manager\Manager.cs" />
+    <Compile Include="UI\Menu.cs" />
+    <Compile Include="UI\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThermalSensor .cs" />
+    <Compile Include="Sensors\ThermalSensor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Sensors
 {
-    internal class Program
+    internal static class Printer
     {
-        static void Main(string[] args)
+        public static void PrintStartMenu()
         {
+            Console.WriteLine("enter a number");
         }
     }
 }

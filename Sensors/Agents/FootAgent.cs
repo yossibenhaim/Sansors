@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sensors
 {
-    internal class Manager
+    internal class FootAgent : Agent,  IAgent
     {
-        List<ISensor> sensors = new List<ISensor>();
+        public FootAgent(string name, List<string> sensors) : base (name, sensors)
+        {
+
+        }
     }
 }
