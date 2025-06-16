@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agent.cs" />
     <Compile Include="AudioSensor.cs" />
+    <Compile Include="FootAgent.cs" />
     <Compile Include="IAgent.cs" />
     <Compile Include="ISensor.cs" />
     <Compile Include="Menager.cs" />

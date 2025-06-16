@@ -10,9 +10,9 @@ namespace Sensors
 {
     internal interface IAgent
     {
-        string name { get; set; }
+        string name { get; }
 
-        Dictionary<string,int> sensor { get; set; }
+        Dictionary<string,int> sensorsDict { get; }
 
     }
 }

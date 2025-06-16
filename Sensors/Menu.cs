@@ -9,5 +9,24 @@ namespace Sensors
 {
     internal class Menu
     {
+        public void StartNemu()
+        {
+            bool run = true;
+            while (run)
+            {
+                Console.WriteLine("enter a number");
+                string cohice = Console.ReadLine();
+
+                switch (cohice)
+                {
+                    case "1":
+                        break;
+                    case "2":
+                        break;
+                    case "3":
+                        break;
+                }
+            }
+        }
     }
 }
