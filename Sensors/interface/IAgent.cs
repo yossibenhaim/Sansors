@@ -12,7 +12,7 @@ namespace Sensors
     {
         string name { get; }
 
-        Dictionary<string,int> sensorsDict { get; }
+        Dictionary<string,int> WeaknessesSensorsDict { get; } // שם החולשה
 
     }
 }
