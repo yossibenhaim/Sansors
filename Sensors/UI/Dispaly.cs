@@ -8,30 +8,54 @@ namespace Sensors
 {
     internal class Dispaly
     {
+        public List<IAgent> agents = new List<IAgent>();
         public void FlowGame()
         {
+            Manager manager = new Manager();
+            
             bool run = true;
+            ISensor sensorSelection;
 
             while (run)
             {
-                string choice;
-                Console.WriteLine("enter chioce sensor");
-                choice = Console.ReadLine();
-
-                switch (choice)
+                sensorSelection = this.sensorSelection();
+                if (sensorSelection.name == "false")
                 {
-                    case "1":
-                        break;
-                    case "2":
-                        break;
-                    case "3":
-                        break;
-                    default:
-                        break;
+                    run = false;
                 }
-                
-
+                else
+                {
+                    manager.AddedSensorToAgent(agents[0],sensorSelection);
+                }
             }
+        }
+        public ISensor sensorSelection()
+        {
+            string choice;
+            Console.WriteLine("enter chioce sensor");
+            choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    return new AudioSensor("AudioSensor");
+                case "2":
+                    return new ThermalSensor("ThermalSensor");
+                case "3":
+                    return new AudioSensor("false");
+                default:
+                    return sensorSelection();
+            }
+        }
+        public void Creat()
+        {
+            AudioSensor audio = new AudioSensor("room1");
+            ThermalSensor thermal = new ThermalSensor("room1");
+            List<ISensor> sensors = new List<ISensor>();
+            sensors.Add(audio);
+            sensors.Add(thermal);
+            FootAgent agent = new FootAgent("chaim", sensors.ToArray());
+            agents.Add(agent); 
         }
     }
 }

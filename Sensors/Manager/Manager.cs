@@ -13,12 +13,10 @@ namespace Sensors
 
 
 
-        public void AddedSensorToAgent(IAgent agent, string sensorName)
+        public void AddedSensorToAgent(IAgent agent, ISensor sensor)
         {
-            if (HelpManager.CheckIfSensorExits(agent, sensorName))
-            {
-                agent.weaknessesSensorsDict[sensorName]--;
-            }
+
+            agent.attachedSensors.Add(sensor);
         }
         public void PrintDict(IAgent agent)
         {
@@ -53,17 +51,7 @@ namespace Sensors
             return new int[] { countSensorsAttached, countSensorWeaknesses };
         }
 
-        //public void Creat()
-        //{
-        //    AudioSensor audio = new AudioSensor("room1");
-        //    ThermalSensor thermal = new ThermalSensor("room1");
-        //    List<ISensor> sensors = new List<ISensor>();
-        //    sensors.Add(audio);
-        //    sensors.Add(thermal);
-        //    FootAgent agent = new FootAgent("chaim", sensors.ToArray());
-
-        //    this.rooms.Add(agent);
-        //}
+    
 
     }
 }
