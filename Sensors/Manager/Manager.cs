@@ -60,6 +60,14 @@ namespace Sensors
             return countSensorsAttached;
             
         }
+        public bool CheckingIfTheGameComplete(IAgent agent)
+        {
+            if (FindingTheNumberOfCorrectSensorsConnected(agent) == HelpManager.CountingTheNumberOfWeaknessesInAnAgent(agent))
+            {
+                return false;
+            }
+            return true; 
+        }
 
 
     }

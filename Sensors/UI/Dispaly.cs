@@ -32,7 +32,7 @@ namespace Sensors
                     manager.PrintSensorOfAgent(agents[0]);
                     Printer.PrintCountOfWeaknesses(HelpManager.CountingTheNumberOfWeaknessesInAnAgent(agents[0]));
                     Printer.PrintCountOfCorrectSensor(manager.FindingTheNumberOfCorrectSensorsConnected(agents[0]));
-
+                    run = manager.CheckingIfTheGameComplete(agents[0]);
 
                 }
             }
