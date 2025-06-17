@@ -31,8 +31,25 @@ namespace Sensors
 
         public int[] FindingTheCorrectNumberOfSensorsAttached(IAgent agent)
         {
-            int countSensorsAttached = HelpManager.CountingTheNumberOfSensorsAttachedAgent(agent);
+            int countSensorsAttached = 0;
             int countSensorWeaknesses = HelpManager.CountingTheNumberOfWeaknessesInAnAgent(agent);
+            Dictionary<string, int> ListWeaknesses = new Dictionary<string, int>(agent.weaknessesSensorsDict);
+
+            foreach (ISensor sensor in agent.attachedSensors)
+            {
+                if (sensor.active)
+                {
+                    if (HelpManager.CheckIfSensorExits(agent, sensor.name))
+                    {
+                        if (agent.weaknessesSensorsDict[sensor.name] > 0)
+                        {
+                            countSensorsAttached ++;
+                            agent.weaknessesSensorsDict[sensor.name] --;
+                        }
+                    }
+                }
+            } 
+
             return new int[] { countSensorsAttached, countSensorWeaknesses };
         }
 
