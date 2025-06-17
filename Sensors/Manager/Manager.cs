@@ -13,27 +13,35 @@ namespace Sensors
 
 
 
-        public void AddedSensorToAgent(IAgent agent, string sensorName)
+        public void AddedSensorToAgent(IAgent agent, ISensor sensor)
         {
-            if (HelpManager.CheckIfSensorExits(agent, sensorName))
+            agent.attachedSensors.Add(sensor);
+            if (HelpManager.CheckIfSensorExits(agent, sensor.name))
             {
-                agent.weaknessesSensorsDict[sensorName]--;
+                sensor.active = true;
             }
         }
-        public void PrintDict(IAgent agent)
+        public void PrintSensorOfAgent(IAgent agent)
         {
+            Console.WriteLine("weaknessesSensorsDict");
             foreach (string key in agent.weaknessesSensorsDict.Keys)
             {
-                Console.WriteLine(key);
-                Console.WriteLine(agent.weaknessesSensorsDict[key]);
+                Console.WriteLine("key " + key);
+                Console.WriteLine("value of " + key + "= " + agent.weaknessesSensorsDict[key]);
             }
+            Console.WriteLine("attachedSensors");
+            foreach (ISensor sensor in agent.attachedSensors)
+            {
+                Console.WriteLine("name of sensor = " + sensor.name);
+                Console.WriteLine("sensor active = " + sensor.active);
+            }
+
         }
 
-        public int[] FindingTheCorrectNumberOfSensorsAttached(IAgent agent)
+        public int FindingTheNumberOfCorrectSensorsConnected(IAgent agent)
         {
             int countSensorsAttached = 0;
-            int countSensorWeaknesses = HelpManager.CountingTheNumberOfWeaknessesInAnAgent(agent);
-            Dictionary<string, int> ListWeaknesses = new Dictionary<string, int>(agent.weaknessesSensorsDict);
+            Dictionary<string, int> DictWeaknesses = new Dictionary<string, int>(agent.weaknessesSensorsDict);
 
             foreach (ISensor sensor in agent.attachedSensors)
             {
@@ -44,26 +52,23 @@ namespace Sensors
                         if (agent.weaknessesSensorsDict[sensor.name] > 0)
                         {
                             countSensorsAttached ++;
-                            agent.weaknessesSensorsDict[sensor.name] --;
+                            DictWeaknesses[sensor.name] --;
                         }
                     }
                 }
-            } 
-
-            return new int[] { countSensorsAttached, countSensorWeaknesses };
+            }
+            return countSensorsAttached;
+            
+        }
+        public bool CheckingIfTheGameComplete(IAgent agent)
+        {
+            if (FindingTheNumberOfCorrectSensorsConnected(agent) == HelpManager.CountingTheNumberOfWeaknessesInAnAgent(agent))
+            {
+                return false;
+            }
+            return true; 
         }
 
-        //public void Creat()
-        //{
-        //    AudioSensor audio = new AudioSensor("room1");
-        //    ThermalSensor thermal = new ThermalSensor("room1");
-        //    List<ISensor> sensors = new List<ISensor>();
-        //    sensors.Add(audio);
-        //    sensors.Add(thermal);
-        //    FootAgent agent = new FootAgent("chaim", sensors.ToArray());
-
-        //    this.rooms.Add(agent);
-        //}
 
     }
 }

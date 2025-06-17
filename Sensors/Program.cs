@@ -11,17 +11,8 @@ namespace Sensors
     {
         static void Main(string[] args)
         {
-
-            Manager manager = new Manager();
-            manager.CreatRoom();
-            manager.CreatRoom();
-            manager.PrintDict(manager.rooms[0]);
-            manager.PrintDict(manager.rooms[1]);
-
-
-
-
-
+            Dispaly dispaly = new Dispaly();
+            dispaly.FlowGame();
         }
     }
 }
