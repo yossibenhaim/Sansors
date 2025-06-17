@@ -64,6 +64,7 @@ namespace Sensors
         {
             if (FindingTheNumberOfCorrectSensorsConnected(agent) == HelpManager.CountingTheNumberOfWeaknessesInAnAgent(agent))
             {
+                Printer.PrintCompleteGame();
                 return false;
             }
             return true; 
