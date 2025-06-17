@@ -9,10 +9,10 @@ namespace Sensors
     internal class Dispaly
     {
         public List<IAgent> agents = new List<IAgent>();
+        public Manager manager = new Manager();
         public void FlowGame()
         {
-            Manager manager = new Manager();
-            
+            Creat();   
             bool run = true;
             ISensor sensorSelection;
 
@@ -25,7 +25,15 @@ namespace Sensors
                 }
                 else
                 {
+                    manager.PrintSensorOfAgent(agents[0]);
                     manager.AddedSensorToAgent(agents[0],sensorSelection);
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    manager.PrintSensorOfAgent(agents[0]);
+                    Printer.PrintCountOfWeaknesses(HelpManager.CountingTheNumberOfWeaknessesInAnAgent(agents[0]));
+                    Printer.PrintCountOfCorrectSensor(manager.FindingTheNumberOfCorrectSensorsConnected(agents[0]));
+
+
                 }
             }
         }
@@ -49,8 +57,8 @@ namespace Sensors
         }
         public void Creat()
         {
-            AudioSensor audio = new AudioSensor("room1");
-            ThermalSensor thermal = new ThermalSensor("room1");
+            AudioSensor audio = new AudioSensor("AudioSensor");
+            ThermalSensor thermal = new ThermalSensor("AudioSensor");
             List<ISensor> sensors = new List<ISensor>();
             sensors.Add(audio);
             sensors.Add(thermal);

@@ -24,9 +24,10 @@ namespace Sensors
             int countSensorWeaknesses = 0;
             foreach (int countSensor in ListWeaknesses.Values)
             {
-                countSensorWeaknesses++;
+                countSensorWeaknesses += countSensor;
             }
             return countSensorWeaknesses;
         }
+
     }
 }

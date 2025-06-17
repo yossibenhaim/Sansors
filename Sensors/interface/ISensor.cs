@@ -11,7 +11,7 @@ namespace Sensors
     {
         string name { get; }
 
-        bool active { get; }
+        bool active { get; set; }
 
     }
 }

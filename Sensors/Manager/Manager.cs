@@ -15,23 +15,33 @@ namespace Sensors
 
         public void AddedSensorToAgent(IAgent agent, ISensor sensor)
         {
-
             agent.attachedSensors.Add(sensor);
-        }
-        public void PrintDict(IAgent agent)
-        {
-            foreach (string key in agent.weaknessesSensorsDict.Keys)
+            if (HelpManager.CheckIfSensorExits(agent, sensor.name))
             {
-                Console.WriteLine(key);
-                Console.WriteLine(agent.weaknessesSensorsDict[key]);
+                sensor.active = true;
             }
         }
+        public void PrintSensorOfAgent(IAgent agent)
+        {
+            Console.WriteLine("weaknessesSensorsDict");
+            foreach (string key in agent.weaknessesSensorsDict.Keys)
+            {
+                Console.WriteLine("key " + key);
+                Console.WriteLine("value of " + key + "= " + agent.weaknessesSensorsDict[key]);
+            }
+            Console.WriteLine("attachedSensors");
+            foreach (ISensor sensor in agent.attachedSensors)
+            {
+                Console.WriteLine("name of sensor = " + sensor.name);
+                Console.WriteLine("sensor active = " + sensor.active);
+            }
 
-        public int[] FindingTheCorrectNumberOfSensorsAttached(IAgent agent)
+        }
+
+        public int FindingTheNumberOfCorrectSensorsConnected(IAgent agent)
         {
             int countSensorsAttached = 0;
-            int countSensorWeaknesses = HelpManager.CountingTheNumberOfWeaknessesInAnAgent(agent);
-            Dictionary<string, int> ListWeaknesses = new Dictionary<string, int>(agent.weaknessesSensorsDict);
+            Dictionary<string, int> DictWeaknesses = new Dictionary<string, int>(agent.weaknessesSensorsDict);
 
             foreach (ISensor sensor in agent.attachedSensors)
             {
@@ -42,16 +52,15 @@ namespace Sensors
                         if (agent.weaknessesSensorsDict[sensor.name] > 0)
                         {
                             countSensorsAttached ++;
-                            agent.weaknessesSensorsDict[sensor.name] --;
+                            DictWeaknesses[sensor.name] --;
                         }
                     }
                 }
-            } 
-
-            return new int[] { countSensorsAttached, countSensorWeaknesses };
+            }
+            return countSensorsAttached;
+            
         }
 
-    
 
     }
 }

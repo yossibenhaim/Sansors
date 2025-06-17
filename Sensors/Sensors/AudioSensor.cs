@@ -10,7 +10,7 @@ namespace Sensors
     {
         public string name { get; }
 
-        public bool active { get; private set; } = false;
+        public bool active { get; set; } = false;
 
         public AudioSensor(string name)
         {

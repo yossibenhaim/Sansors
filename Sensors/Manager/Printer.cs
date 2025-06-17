@@ -12,5 +12,14 @@ namespace Sensors
         {
             Console.WriteLine("enter a number");
         }
+
+        public static void PrintCountOfCorrectSensor(int countSensor)
+        {
+            Console.WriteLine("The count of correct sensor is " + countSensor);
+        }
+        public static void PrintCountOfWeaknesses(int countSensorWeaknesses)
+        {
+            Console.WriteLine("The count of Weaknesses in agent is " + countSensorWeaknesses);
+        }
     }
 }
