@@ -18,7 +18,7 @@ namespace Sensors
                 }
             }return false;
         }
-        public int CountingTheNumberOfSensorsAttachedAgent(IAgent agent)
+        public static int CountingTheNumberOfSensorsAttachedAgent(IAgent agent)
         {
             int countSensorsAttached = 0;
             foreach (ISensor sensor in agent.attachedSensors)
@@ -30,7 +30,7 @@ namespace Sensors
             }
             return countSensorsAttached;
         }
-        public int CountingTheNumberOfWeaknessesInAnAgent(IAgent agent)
+        public static int CountingTheNumberOfWeaknessesInAnAgent(IAgent agent)
         {
             int countSensorWeaknesses = 0;
             foreach (int countSensor in agent.weaknessesSensorsDict.Values)
