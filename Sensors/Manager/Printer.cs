@@ -21,5 +21,10 @@ namespace Sensors
         {
             Console.WriteLine("The count of Weaknesses in agent is " + countSensorWeaknesses);
         }
+        public static void PrintCompleteGame()
+        {
+            Console.WriteLine("Well done!!");
+            Console.WriteLine("You have completed the game!!");
+        }
     }
 }

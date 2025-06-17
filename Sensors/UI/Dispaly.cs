@@ -25,11 +25,7 @@ namespace Sensors
                 }
                 else
                 {
-                    manager.PrintSensorOfAgent(agents[0]);
                     manager.AddedSensorToAgent(agents[0],sensorSelection);
-                    Console.WriteLine();
-                    Console.WriteLine();
-                    manager.PrintSensorOfAgent(agents[0]);
                     Printer.PrintCountOfWeaknesses(HelpManager.CountingTheNumberOfWeaknessesInAnAgent(agents[0]));
                     Printer.PrintCountOfCorrectSensor(manager.FindingTheNumberOfCorrectSensorsConnected(agents[0]));
                     run = manager.CheckingIfTheGameComplete(agents[0]);
