@@ -28,17 +28,27 @@ namespace Sensors
                 Console.WriteLine(agent.weaknessesSensorsDict[key]);
             }
         }
-        public void CreatRoom()
-        {
-            AudioSensor audio = new AudioSensor("room1");
-            ThermalSensor thermal = new ThermalSensor("room1");
-            List<ISensor> sensors = new List<ISensor>();
-            sensors.Add(audio);
-            sensors.Add(thermal);
-            FootAgent agent = new FootAgent("chaim", sensors.ToArray());
 
-            this.rooms.Add(agent);
+        public int[] FindingTheCorrectNumberOfSensorsAttached(IAgent agent)
+        {
+            Dictionary<string, int> SensorsAttached = new Dictionary<string, int>();
+            int countSensorWeaknesses = 0;
+                
+         
+
         }
+
+        //public void Creat()
+        //{
+        //    AudioSensor audio = new AudioSensor("room1");
+        //    ThermalSensor thermal = new ThermalSensor("room1");
+        //    List<ISensor> sensors = new List<ISensor>();
+        //    sensors.Add(audio);
+        //    sensors.Add(thermal);
+        //    FootAgent agent = new FootAgent("chaim", sensors.ToArray());
+
+        //    this.rooms.Add(agent);
+        //}
 
     }
 }

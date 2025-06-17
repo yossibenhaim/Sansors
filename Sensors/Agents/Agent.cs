@@ -12,7 +12,7 @@ namespace Sensors
 
         public Dictionary<string, int> weaknessesSensorsDict { get; private set; } = new Dictionary<string, int>();
 
-        public List<ISensor> attachedSensors = new List<ISensor>(); //dict
+        public List<ISensor> attachedSensors { get; private set; } = new List<ISensor>(); 
         public Agent(string name, ISensor[] sensors) 
         {
             this.name = name;
