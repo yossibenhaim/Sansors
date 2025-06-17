@@ -12,7 +12,8 @@ namespace Sensors
     {
         string name { get; }
 
-        Dictionary<string,int> WeaknessesSensorsDict { get; } // שם החולשה
+        Dictionary<string,int> weaknessesSensorsDict { get; } // שם החולשה
 
+        List<ISensor> attachedSensors { get; }
     }
 }

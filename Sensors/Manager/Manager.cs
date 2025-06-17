@@ -28,17 +28,42 @@ namespace Sensors
                 Console.WriteLine(agent.weaknessesSensorsDict[key]);
             }
         }
-        public void CreatRoom()
-        {
-            AudioSensor audio = new AudioSensor("room1");
-            ThermalSensor thermal = new ThermalSensor("room1");
-            List<ISensor> sensors = new List<ISensor>();
-            sensors.Add(audio);
-            sensors.Add(thermal);
-            FootAgent agent = new FootAgent("chaim", sensors.ToArray());
 
-            this.rooms.Add(agent);
+        public int[] FindingTheCorrectNumberOfSensorsAttached(IAgent agent)
+        {
+            int countSensorsAttached = 0;
+            int countSensorWeaknesses = HelpManager.CountingTheNumberOfWeaknessesInAnAgent(agent);
+            Dictionary<string, int> ListWeaknesses = new Dictionary<string, int>(agent.weaknessesSensorsDict);
+
+            foreach (ISensor sensor in agent.attachedSensors)
+            {
+                if (sensor.active)
+                {
+                    if (HelpManager.CheckIfSensorExits(agent, sensor.name))
+                    {
+                        if (agent.weaknessesSensorsDict[sensor.name] > 0)
+                        {
+                            countSensorsAttached ++;
+                            agent.weaknessesSensorsDict[sensor.name] --;
+                        }
+                    }
+                }
+            } 
+
+            return new int[] { countSensorsAttached, countSensorWeaknesses };
         }
+
+        //public void Creat()
+        //{
+        //    AudioSensor audio = new AudioSensor("room1");
+        //    ThermalSensor thermal = new ThermalSensor("room1");
+        //    List<ISensor> sensors = new List<ISensor>();
+        //    sensors.Add(audio);
+        //    sensors.Add(thermal);
+        //    FootAgent agent = new FootAgent("chaim", sensors.ToArray());
+
+        //    this.rooms.Add(agent);
+        //}
 
     }
 }
