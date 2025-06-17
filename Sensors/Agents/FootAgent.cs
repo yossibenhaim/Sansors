@@ -8,7 +8,7 @@ namespace Sensors
 {
     internal class FootAgent : Agent,  IAgent
     {
-        public FootAgent(string name, List<string> sensors) : base (name, sensors)
+        public FootAgent(string name, ISensor[] sensors) : base (name, sensors)
         {
 
         }

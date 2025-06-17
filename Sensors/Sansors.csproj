@@ -51,8 +51,9 @@
     <Compile Include="interface\IAgent.cs" />
     <Compile Include="interface\ISensor.cs" />
     <Compile Include="Manager\Manager.cs" />
+    <Compile Include="UI\Dispaly.cs" />
     <Compile Include="UI\Menu.cs" />
-    <Compile Include="UI\Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sensors\ThermalSensor.cs" />
   </ItemGroup>

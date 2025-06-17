@@ -10,18 +10,24 @@ namespace Sensors
     {
         public string name { get; }
 
-        public Dictionary<string, int> sensorsDict { get; private set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> weaknessesSensorsDict { get; private set; } = new Dictionary<string, int>();
 
-        public Agent(string name, List<string> sensors)
+        public List<ISensor> attachedSensors = new List<ISensor>(); //dict
+        public Agent(string name, ISensor[] sensors) 
         {
             this.name = name;
-            foreach(string sensor in sensors)
+            foreach(ISensor sensor in sensors)
             {
-                if (sensorsDict.ContainsKey(sensor))
-                { sensorsDict[sensor] += 1; }
+                if (weaknessesSensorsDict.ContainsKey(sensor.name))
+                { weaknessesSensorsDict[sensor.name] += 1; }
                 else
-                { sensorsDict[sensor] = 1; }
+                { weaknessesSensorsDict[sensor.name] = 1; }
             }
+        }
+
+        public void AttachingSensors(ISensor newSensor)
+        {
+            attachedSensors.Add(newSensor);
         }
     }
 }
