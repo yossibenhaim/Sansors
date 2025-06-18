@@ -63,7 +63,7 @@ namespace Sensors
             sensors.Add(audio);
             sensors.Add(thermal);
             sensors.Add(plusSensor);
-            FootAgent agent = new FootAgent("chaim", sensors.ToArray());
+            SquadLeader agent = new SquadLeader("chaim", sensors.ToArray());
             agents.Add(agent); 
         }
     }

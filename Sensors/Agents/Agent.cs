@@ -26,7 +26,7 @@ namespace Sensors
             this.attachedSensors = new ISensor[(sensors.Length)];
         }
 
-        public void AttachingSensors(ISensor newSensor, int index)
+        public virtual void AttachingSensors(ISensor newSensor, int index)
         {
             attachedSensors[index] = newSensor;
         }
