@@ -6,19 +6,12 @@ using System.Threading.Tasks;
 
 namespace Sensors
 {
-    internal class AudioSensor : ISensor
+    internal class AudioSensor : Sensor, ISensor
     {
-        public string name { get; }
-
-        public bool active { get; set; } = false;
-
         public AudioSensor(string name)
         {
-            this.name = name;
+            sensorName = name;
         }
-        public void SetActive()
-        {
-            active = true;
-        } 
+       
     }
 }

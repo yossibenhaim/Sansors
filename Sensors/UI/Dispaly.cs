@@ -19,13 +19,14 @@ namespace Sensors
             while (run)
             {
                 sensorSelection = this.sensorSelection();
-                if (sensorSelection.name == "false")
+                if (sensorSelection.sensorName == "false")
                 {
                     run = false;
                 }
                 else
                 {
                     manager.AddedSensorToAgent(agents[0],sensorSelection);
+                    manager.ActiveActivation(sensorSelection);
                     Printer.PrintCountOfWeaknesses(HelpManager.CountingTheNumberOfWeaknessesInAnAgent(agents[0]));
                     Printer.PrintCountOfCorrectSensor(manager.FindingTheNumberOfCorrectSensorsConnected(agents[0]));
                     run = manager.CheckingIfTheGameComplete(agents[0]);
@@ -46,6 +47,8 @@ namespace Sensors
                 case "2":
                     return new ThermalSensor("ThermalSensor");
                 case "3":
+                    return new PlusSensor("PlusSensor");
+                case "4":
                     return new AudioSensor("false");
                 default:
                     return sensorSelection();
@@ -55,9 +58,11 @@ namespace Sensors
         {
             AudioSensor audio = new AudioSensor("AudioSensor");
             ThermalSensor thermal = new ThermalSensor("AudioSensor");
+            PlusSensor plusSensor = new PlusSensor("PlusSensor");
             List<ISensor> sensors = new List<ISensor>();
             sensors.Add(audio);
             sensors.Add(thermal);
+            sensors.Add(plusSensor);
             FootAgent agent = new FootAgent("chaim", sensors.ToArray());
             agents.Add(agent); 
         }

@@ -9,9 +9,15 @@ namespace Sensors
 {
     internal interface ISensor
     {
-        string name { get; }
+        string sensorName { get; }
 
         bool active { get; set; }
+        int countActive { get; set; }
 
+        IAgent pinnedTo { get; set; }
+
+        void Active();
+
+        void StartActive();
     }
 }

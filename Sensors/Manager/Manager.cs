@@ -11,16 +11,19 @@ namespace Sensors
     {
         public List<IAgent> rooms = new List<IAgent>();
 
-
+        public List<ISensor> removeSensors = new List<ISensor>();
 
         public void AddedSensorToAgent(IAgent agent, ISensor sensor)
         {
             agent.attachedSensors.Add(sensor);
-            if (HelpManager.CheckIfSensorExits(agent, sensor.name))
-            {
-                sensor.active = true;
-            }
+            sensor.pinnedTo = agent;
         }
+
+        public void ActiveActivation(ISensor sensor)
+        {
+            sensor.StartActive();
+        }
+
         public void PrintSensorOfAgent(IAgent agent)
         {
             Console.WriteLine("weaknessesSensorsDict");
@@ -32,7 +35,7 @@ namespace Sensors
             Console.WriteLine("attachedSensors");
             foreach (ISensor sensor in agent.attachedSensors)
             {
-                Console.WriteLine("name of sensor = " + sensor.name);
+                Console.WriteLine("name of sensor = " + sensor.sensorName);
                 Console.WriteLine("sensor active = " + sensor.active);
             }
 
@@ -47,12 +50,12 @@ namespace Sensors
             {
                 if (sensor.active)
                 {
-                    if (HelpManager.CheckIfSensorExits(agent, sensor.name))
+                    if (HelpManager.CheckIfSensorExits(agent, sensor.sensorName))
                     {
-                        if (agent.weaknessesSensorsDict[sensor.name] > 0)
+                        if (agent.weaknessesSensorsDict[sensor.sensorName] > 0)
                         {
                             countSensorsAttached ++;
-                            DictWeaknesses[sensor.name] --;
+                            DictWeaknesses[sensor.sensorName] --;
                         }
                     }
                 }
@@ -70,6 +73,17 @@ namespace Sensors
             return true; 
         }
 
+        public static void RemovingClippedSensor(ISensor sensor, IAgent agent)
+        {
+            foreach (string key in agent.weaknessesSensorsDict.Keys)
+            {
+                if (key == sensor.sensorName)
+                {
+                    agent.attachedSensors.Remove(sensor);
+                    return;
+                }
+            }
+        }
 
     }
 }
