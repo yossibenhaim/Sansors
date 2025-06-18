@@ -14,6 +14,8 @@ namespace Sensors
 
         Dictionary<string,int> weaknessesSensorsDict { get; } // שם החולשה
 
-        List<ISensor> attachedSensors { get; }
+        ISensor[] attachedSensors { get; }
+        void AttachingSensors(ISensor newSensor, int index);
+
     }
 }

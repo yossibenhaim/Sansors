@@ -18,10 +18,13 @@ namespace Sensors
 
         public void StartActive()
         {
-            List<ISensor> copyAttachedSensors = new List<ISensor>(this.pinnedTo.attachedSensors);
+            ISensor[] copyAttachedSensors = (ISensor[])this.pinnedTo.attachedSensors.Clone();
             foreach (ISensor sensor in copyAttachedSensors)
             {
-                sensor.Active();
+                if (sensor != null)
+                {
+                    sensor.Active();
+                }
             }
         }
         public virtual void Active()
