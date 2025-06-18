@@ -21,7 +21,7 @@ namespace Sensors
 
         public void ActiveActivation(ISensor sensor)
         {
-            sensor.SetActive();
+            sensor.Active();
         }
 
         public void PrintSensorOfAgent(IAgent agent)
@@ -73,9 +73,16 @@ namespace Sensors
             return true; 
         }
 
-        public static void RemovingClippedSensor(string name, IAgent agent)
+        public static void RemovingClippedSensor(string sensorName, IAgent agent)
         {
-
+            foreach (string key in agent.weaknessesSensorsDict.Keys)
+            {
+                if (key == sensorName)
+                {
+                    agent.weaknessesSensorsDict[key]--;
+                    return;
+                }
+            }
         }
 
     }

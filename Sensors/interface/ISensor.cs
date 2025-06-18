@@ -15,6 +15,6 @@ namespace Sensors
 
         IAgent pinnedTo { get; set; }
 
-        void SetActive();
+        void Active();
     }
 }

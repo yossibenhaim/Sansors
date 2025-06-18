@@ -14,7 +14,7 @@ namespace Sensors
 
         public IAgent pinnedTo { get; set; } 
 
-        public virtual void SetActive()
+        public virtual void Active()
         {
             if (HelpManager.CheckIfSensorExits(this.pinnedTo, this.sensorName))
             { 

@@ -14,9 +14,9 @@ namespace Sensors
             this.sensorName = name;
             this._count = 0;
         }
-        public override void SetActive()
+        public override void Active()
         {
-            base.SetActive();   
+            base.Active();   
             this._count++;
             this.breakSensor();
         }
