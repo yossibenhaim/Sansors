@@ -1,104 +1,104 @@
-# 🎮 Agent Sensor Game / משחק חקירת סוכן
+# 💡 Sensors Simulation Game
 
-> A turn-based game where you play as an investigator trying to expose an agent's weaknesses using sensors.  
-> משחק מבוסס תורות, בו אתה מנסה "לשבור" את הסוכן בעזרת חיישנים שמכוונים לחולשות שלו.
+סימולציית משחק המדמה מערכת של סוכנים וחיישנים, שנכתבה בשפת C# תוך שימוש בעקרונות תכנות מונחה עצמים (OOP).
 
 ---
 
-## 📁 Folder Structure / מבנה תיקיות
+## 🧾 תוכן עניינים
+- [על הפרויקט](#על-הפרויקט)
+- [הרצה](#הרצה)
+- [מבנה המערכת](#מבנה-המערכת)
+- [עקרונות OOP](#עקרונות-oop)
+- [אפשרויות להרחבה](#אפשרויות-להרחבה)
+- [מבנה התיקיות](#מבנה-התיקיות)
 
-```
-Sensors/
+---
+
+## על הפרויקט
+
+במשחק זה, סוכן מצויד בחיישנים שונים על מנת לזהות ולטפל בחולשות קיימות. מטרת השחקן היא לחבר את החיישנים הנכונים למיקומים המתאימים, עד שכל החולשות טופלו.
+
+🧠 **מטרת הלמידה**:  
+תרגול מושגים מתקדמים של OOP כמו ירושה, פולימורפיזם, ממשקים ואינקאפסולציה.
+
+---
+
+## הרצה
+
+1. פתח את הקובץ `Sansors.sln` ב־Visual Studio.
+2. ודא שקובץ `Program.cs` הוא נקודת ההתחלה (`Startup object`).
+3. הרץ את התוכנית (F5).
+4. פעל לפי התפריטים במסוף — בחר חיישנים, חבר אותם לסוכן, וטפל בחולשות עד לסיום המשחק.
+
+---
+
+## מבנה המערכת
+
+### 🧩 מחלקות עיקריות
+
+| אזור | קובץ | תיאור |
+|------|------|--------|
+| `UI/Dispaly.cs` | `Dispaly` | מנהל את זרימת המשחק והתפריטים |
+| `Agents/Agent.cs` | `Agent` | מחלקת בסיס לכל סוכן |
+| `Agents/SquadLeader.cs` | `SquadLeader` | סוכן שמסיר חיישן כל 3 חיבורים |
+| `Manager/Manager.cs` | `Manager` | בודק אם הסנסור מתאים, מפעיל את החיישן |
+| `Sensors/Sensor.cs` | `Sensor` | מחלקת בסיס לחיישנים |
+| `Sensors/AudioSensor.cs` | `AudioSensor` | חיישן שמע |
+| `Sensors/ThermalSensor.cs` | `ThermalSensor` | חיישן תרמי |
+| `Sensors/PlusSensor.cs` | `PlusSensor` | חיישן שמפסיק לפעול לאחר 3 פעמים |
+| `Manager/HelpManager.cs` | `HelpManager` | פונקציות עזר סטטיסטיות |
+| `Manager/Printer.cs` | `Printer` | הדפסות למסך |
+| `interface/IAgent.cs` | `IAgent` | חוזה לסוכנים |
+| `interface/ISensor.cs` | `ISensor` | חוזה לחיישנים |
+
+---
+
+## עקרונות OOP
+
+- ✅ **Encapsulation** – כל רכיב אחראי רק לתחום שלו.
+- ✅ **Inheritance** – סוכנים יורשים מ־`Agent`, חיישנים מ־`Sensor`.
+- ✅ **Polymorphism** – מימושים שונים של `Active()` בהתאם לחיישן.
+- ✅ **Interfaces** – שימוש ב־`IAgent` ו־`ISensor` למבנה אחיד וגמיש.
+
+---
+
+## אפשרויות להרחבה
+
+- 🧠 אלגוריתם בחירה אוטומטי של חיישנים
+- 📊 לוג פעילות/קובץ לוג
+- 🖼️ ממשק גרפי WPF או WinForms
+- 🔁 תמיכה במספר סוכנים במקביל
+- 💾 שמירת מצב לקובץ
+
+---
+
+## מבנה התיקיות
+
+```plaintext
+Sansors/
+├── Agents/
+│   ├── Agent.cs
+│   ├── FootAgent.cs
+│   └── SquadLeader.cs
 │
-├── IAgent.cs         # Interface for agents / ממשק לסוכן
-├── ISensor.cs        # Interface for sensors / ממשק לחיישן
-├── Sensor.cs         # (Optional) Concrete sensor class / מחלקת חיישן ממשית (אם תתבצע)
-├── Menu.cs           # Game menu logic / תפריט המשחק
-├── Manager.cs        # Main game logic (turns, checking) / ניהול המשחק
-├── Program.cs        # Entry point / נקודת כניסה
-├── Properties/
-│   └── AssemblyInfo.cs
-└── obj/
-    └── Debug/
-        └── .NETFramework,Version=v4.7.2.AssemblyAttributes.cs
-```
-
----
-
-## 🧠 Game Logic / לוגיקת המשחק
-
-### 🎯 Goal / מטרה
-- Use sensors to match and reduce the weaknesses of an agent.
-- When all weaknesses reach 0 – the agent is "broken" and you win!
-- עליך להשתמש בחיישנים מתאימים לחולשות הסוכן.  
-  כשהכול מגיע ל־0 – ניצחת!
-
-### 🔁 Flow / מהלך
-
-1. Display menu – user selects an interrogation room  
-   מציגים תפריט – המשתמש בוחר חדר חקירה
-
-2. Load an agent with a dictionary of weaknesses:  
-   טוענים סוכן עם מילון חולשות:
-
-```csharp
-Dictionary<string, int> Weaknesses = new Dictionary<string, int>()
-{
-    { "Thermal Sensor", 2 },
-    { "Sound Detector", 1 },
-    { "Pressure Sensor", 3 }
-};
-```
-
-3. Each turn:
-   - Ask the player to choose a sensor
-   - If the sensor matches a weakness – subtract 1
-   - If not – just skip to the next turn
-   כל תור:
-   - שואל את החוקר איזה חיישן לבחור
-   - אם תואם לחולשה → מורידים 1
-   - אם לא → לא קורה כלום
-
-4. When all dictionary values are zero → display win message  
-   כאשר כל הערכים במילון = 0 → הודעת ניצחון
-
-```csharp
-Console.WriteLine("ניצחת את הסוכן! / You defeated the agent!");
-```
-
----
-
-## 🛠 Technologies
-
-- C# .NET Framework 4.7.2
-- Console Application
-
----
-
-## 🧩 Interfaces
-
-### `IAgent`
-```csharp
-interface IAgent
-{
-    string name { get; set; }
-    Dictionary<string, int> sensor { get; set; } // weaknesses
-}
-```
-
-### `ISensor`
-```csharp
-interface ISensor
-{
-    string name { get; set; }
-    bool active { get; set; }
-}
-```
-
----
-
-## 🧑‍💻 Author
-
-Created by Yossi (יוסי)
-
----
+├── interface/
+│   ├── IAgent.cs
+│   └── ISensor.cs
+│
+├── Manager/
+│   ├── HelpManager.cs
+│   ├── Manager.cs
+│   └── Printer.cs
+│
+├── Sensors/
+│   ├── AudioSensor.cs
+│   ├── PlusSensor.cs
+│   ├── Sensor.cs
+│   └── ThermalSensor.cs
+│
+├── UI/
+│   └── Dispaly.cs
+│
+├── Program.cs
+├── App.config
+└── Sansors.sln
