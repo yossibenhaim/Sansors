@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Sensors
 {
-    internal class Dispaly
+    internal class Display
     {
         public List<IAgent> agents = new List<IAgent>();
         public Manager manager = new Manager();
         public void FlowGame()
         {
-            Creat();   
+            Create();   
             bool run = true;
             ISensor sensorSelection;
 
@@ -54,14 +54,13 @@ namespace Sensors
                     return sensorSelection();
             }
         }
-        public void Creat()
+        public void Create()
         {
             AudioSensor audio = new AudioSensor("AudioSensor");
-            ThermalSensor thermal = new ThermalSensor("AudioSensor");
             PlusSensor plusSensor = new PlusSensor("PlusSensor");
             List<ISensor> sensors = new List<ISensor>();
             sensors.Add(audio);
-            sensors.Add(thermal);
+            sensors.Add(audio);
             sensors.Add(plusSensor);
             SquadLeader agent = new SquadLeader("chaim", sensors.ToArray());
             agents.Add(agent); 

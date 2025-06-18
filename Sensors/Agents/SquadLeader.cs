@@ -23,7 +23,7 @@ namespace Sensors
         }
         public void removeSensor()
         {
-            if (this._counter >= 3)
+            if (this._counter >= attachedSensors.Length)
             {
                 if (!attachedSensors.Any(s => s != null))
                 {

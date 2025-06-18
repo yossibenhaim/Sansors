@@ -11,7 +11,7 @@ namespace Sensors
     {
         static void Main(string[] args)
         {
-            Dispaly dispaly = new Dispaly();
+            Display dispaly = new Display();
             dispaly.FlowGame();
         }
     }
