@@ -16,18 +16,12 @@ namespace Sensors
         public override void Active()
         {
             base.Active();
-            if (!this.active)
             {
                 this.breakSensor();
             }
         }
         private void breakSensor()
         {
-            foreach (ISensor sensor in pinnedTo.attachedSensors)
-            {
-                //Console.WriteLine(sensor.sensorName);
-                //Console.WriteLine(this.countActive);
-            }
             if (this.countActive >= 3)
             {
                 Manager.RemovingClippedSensor(this, pinnedTo);
