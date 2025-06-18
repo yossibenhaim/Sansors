@@ -16,11 +16,9 @@ namespace Sensors
         public void AddedSensorToAgent(IAgent agent, ISensor sensor)
         {
             agent.attachedSensors.Add(sensor);
-            if (HelpManager.CheckIfSensorExits(agent, sensor.name))
-            {
-                sensor.active = true;
-            }
+            sensor.pinnedTo = agent;
         }
+
         public void PrintSensorOfAgent(IAgent agent)
         {
             Console.WriteLine("weaknessesSensorsDict");
@@ -32,7 +30,7 @@ namespace Sensors
             Console.WriteLine("attachedSensors");
             foreach (ISensor sensor in agent.attachedSensors)
             {
-                Console.WriteLine("name of sensor = " + sensor.name);
+                Console.WriteLine("name of sensor = " + sensor.sensorName);
                 Console.WriteLine("sensor active = " + sensor.active);
             }
 
@@ -47,12 +45,12 @@ namespace Sensors
             {
                 if (sensor.active)
                 {
-                    if (HelpManager.CheckIfSensorExits(agent, sensor.name))
+                    if (HelpManager.CheckIfSensorExits(agent, sensor.sensorName))
                     {
-                        if (agent.weaknessesSensorsDict[sensor.name] > 0)
+                        if (agent.weaknessesSensorsDict[sensor.sensorName] > 0)
                         {
                             countSensorsAttached ++;
-                            DictWeaknesses[sensor.name] --;
+                            DictWeaknesses[sensor.sensorName] --;
                         }
                     }
                 }
@@ -70,7 +68,7 @@ namespace Sensors
             return true; 
         }
 
-        public static void RemovingClippedSensor(string name)
+        public static void RemovingClippedSensor(string name, IAgent agent)
         {
 
         }

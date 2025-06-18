@@ -18,10 +18,10 @@ namespace Sensors
             this.name = name;
             foreach(ISensor sensor in sensors)
             {
-                if (weaknessesSensorsDict.ContainsKey(sensor.name))
-                { weaknessesSensorsDict[sensor.name] += 1; }
+                if (weaknessesSensorsDict.ContainsKey(sensor.sensorName))
+                { weaknessesSensorsDict[sensor.sensorName] += 1; }
                 else
-                { weaknessesSensorsDict[sensor.name] = 1; }
+                { weaknessesSensorsDict[sensor.sensorName] = 1; }
             }
         }
 

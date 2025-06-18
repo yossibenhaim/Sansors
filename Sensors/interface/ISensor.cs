@@ -13,7 +13,8 @@ namespace Sensors
 
         bool active { get; set; }
 
-        string pinnedTo { get; set; }
+        IAgent pinnedTo { get; set; }
 
+        void SetActive();
     }
 }

@@ -24,7 +24,7 @@ namespace Sensors
         {
             if (this._count >= 3)
             {
-                Manager.RemovingClippedSensor(this.sensorName);
+                Manager.RemovingClippedSensor(this.sensorName, pinnedTo);
             }
         }
     }

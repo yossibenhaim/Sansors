@@ -19,7 +19,7 @@ namespace Sensors
             while (run)
             {
                 sensorSelection = this.sensorSelection();
-                if (sensorSelection.name == "false")
+                if (sensorSelection.sensorName == "false")
                 {
                     run = false;
                 }

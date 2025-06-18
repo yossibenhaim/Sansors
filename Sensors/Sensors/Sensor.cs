@@ -12,7 +12,7 @@ namespace Sensors
 
         public bool active { get; set; } = false;
 
-        public string pinnedTo;
+        public IAgent pinnedTo { get; set; } 
 
         public virtual void SetActive()
         {
