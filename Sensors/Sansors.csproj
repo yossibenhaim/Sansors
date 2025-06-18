@@ -54,10 +54,10 @@
     <Compile Include="Manager\Manager.cs" />
     <Compile Include="Sensors\PlusSensor.cs" />
     <Compile Include="Sensors\Sensor.cs" />
-    <Compile Include="UI\Dispaly.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sensors\ThermalSensor.cs" />
+    <Compile Include="UI\Display.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
