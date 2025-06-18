@@ -9,7 +9,7 @@ namespace Sensors
 {
     internal interface ISensor
     {
-        string name { get; }
+        string sensorName { get; }
 
         bool active { get; set; }
 
