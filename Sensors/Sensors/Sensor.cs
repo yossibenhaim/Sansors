@@ -16,7 +16,10 @@ namespace Sensors
 
         public virtual void SetActive()
         {
-            active = true;
+            if (HelpManager.CheckIfSensorExits(this.pinnedTo, this.sensorName))
+            { 
+                active = true;
+            }
         }
     }
 }

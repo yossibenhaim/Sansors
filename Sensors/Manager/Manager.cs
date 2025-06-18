@@ -19,6 +19,11 @@ namespace Sensors
             sensor.pinnedTo = agent;
         }
 
+        public void ActiveActivation(ISensor sensor)
+        {
+            sensor.SetActive();
+        }
+
         public void PrintSensorOfAgent(IAgent agent)
         {
             Console.WriteLine("weaknessesSensorsDict");
