@@ -14,12 +14,26 @@ namespace Sensors
 
         public IAgent pinnedTo { get; set; } 
 
+        public int countActive { get; set; }
+
+        public void StartActive()
+        {
+            List<ISensor> copyAttachedSensors = new List<ISensor>(this.pinnedTo.attachedSensors);
+            foreach (ISensor sensor in copyAttachedSensors)
+            {
+                sensor.Active();
+            }
+        }
         public virtual void Active()
         {
+
+            this.countActive++;
+            
             if (HelpManager.CheckIfSensorExits(this.pinnedTo, this.sensorName))
             { 
                 active = true;
             }
+            
         }
     }
 }

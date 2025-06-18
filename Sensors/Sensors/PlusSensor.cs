@@ -8,23 +8,29 @@ namespace Sensors
 {
     internal class PlusSensor : Sensor,ISensor
     {
-        private int _count;
         public PlusSensor(string name)
         {
             this.sensorName = name;
-            this._count = 0;
+            this.countActive = 0;
         }
         public override void Active()
         {
-            base.Active();   
-            this._count++;
-            this.breakSensor();
+            base.Active();
+            if (!this.active)
+            {
+                this.breakSensor();
+            }
         }
         private void breakSensor()
         {
-            if (this._count >= 3)
+            foreach (ISensor sensor in pinnedTo.attachedSensors)
             {
-                Manager.RemovingClippedSensor(this.sensorName, pinnedTo);
+                //Console.WriteLine(sensor.sensorName);
+                //Console.WriteLine(this.countActive);
+            }
+            if (this.countActive >= 3)
+            {
+                Manager.RemovingClippedSensor(this, pinnedTo);
             }
         }
     }

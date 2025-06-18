@@ -12,9 +12,12 @@ namespace Sensors
         string sensorName { get; }
 
         bool active { get; set; }
+        int countActive { get; set; }
 
         IAgent pinnedTo { get; set; }
 
         void Active();
+
+        void StartActive();
     }
 }

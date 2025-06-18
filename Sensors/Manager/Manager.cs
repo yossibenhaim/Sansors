@@ -11,7 +11,7 @@ namespace Sensors
     {
         public List<IAgent> rooms = new List<IAgent>();
 
-
+        public List<ISensor> removeSensors = new List<ISensor>();
 
         public void AddedSensorToAgent(IAgent agent, ISensor sensor)
         {
@@ -21,7 +21,7 @@ namespace Sensors
 
         public void ActiveActivation(ISensor sensor)
         {
-            sensor.Active();
+            sensor.StartActive();
         }
 
         public void PrintSensorOfAgent(IAgent agent)
@@ -73,13 +73,13 @@ namespace Sensors
             return true; 
         }
 
-        public static void RemovingClippedSensor(string sensorName, IAgent agent)
+        public static void RemovingClippedSensor(ISensor sensor, IAgent agent)
         {
             foreach (string key in agent.weaknessesSensorsDict.Keys)
             {
-                if (key == sensorName)
+                if (key == sensor.sensorName)
                 {
-                    agent.weaknessesSensorsDict[key]--;
+                    agent.attachedSensors.Remove(sensor);
                     return;
                 }
             }

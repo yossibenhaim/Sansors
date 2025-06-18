@@ -51,6 +51,8 @@
     <Compile Include="interface\IAgent.cs" />
     <Compile Include="interface\ISensor.cs" />
     <Compile Include="Manager\Manager.cs" />
+    <Compile Include="Sensors\PlusSensor.cs" />
+    <Compile Include="Sensors\Sensor.cs" />
     <Compile Include="UI\Dispaly.cs" />
     <Compile Include="UI\Menu.cs" />
     <Compile Include="Program.cs" />
