@@ -15,7 +15,8 @@ namespace Sensors
 
         public void AddedSensorToAgent(IAgent agent, ISensor sensor)
         {
-            agent.attachedSensors.Add(sensor);
+            int index = HelpManager.UserIndexSelection(agent);
+            agent.AttachingSensors(sensor,index);
             sensor.pinnedTo = agent;
         }
 
@@ -82,9 +83,12 @@ namespace Sensors
             int countCorrectSensor = 0;
             foreach (ISensor sensor in agent.attachedSensors)
             {
-                if (sensor.active)
+                if (sensor != null)
                 {
-                    countCorrectSensor++;
+                    if (sensor.active)
+                    {
+                        countCorrectSensor++;
+                    }
                 }
             }
             return countCorrectSensor;
@@ -101,14 +105,20 @@ namespace Sensors
 
         public static void RemovingClippedSensor(ISensor sensor, IAgent agent)
         {
-            foreach (string key in agent.weaknessesSensorsDict.Keys)
+            if (agent.weaknessesSensorsDict.ContainsKey(sensor.sensorName))
             {
-                if (key == sensor.sensorName)
+                agent.weaknessesSensorsDict[sensor.sensorName]--;
+                for (int i = 0; i < agent.attachedSensors.Length; i++)
                 {
-                    agent.attachedSensors.Remove(sensor);
-                    return;
+                    if (agent.attachedSensors[i] != null &&
+                        agent.attachedSensors[i].sensorName == sensor.sensorName)
+                    {
+                        agent.attachedSensors[i] = null;
+                        return;
+                    }
                 }
             }
+            
         }
 
     }

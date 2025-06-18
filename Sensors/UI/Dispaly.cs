@@ -37,7 +37,7 @@ namespace Sensors
         public ISensor sensorSelection()
         {
             string choice;
-            Console.WriteLine("enter chioce sensor");
+            Printer.PrintStartMenu();
             choice = Console.ReadLine();
 
             switch (choice)

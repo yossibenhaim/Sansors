@@ -12,7 +12,7 @@ namespace Sensors
 
         public Dictionary<string, int> weaknessesSensorsDict { get; private set; } = new Dictionary<string, int>();
 
-        public List<ISensor> attachedSensors { get; private set; } = new List<ISensor>(); 
+        public ISensor[] attachedSensors { get; private set; } 
         public Agent(string name, ISensor[] sensors) 
         {
             this.name = name;
@@ -23,11 +23,12 @@ namespace Sensors
                 else
                 { weaknessesSensorsDict[sensor.sensorName] = 1; }
             }
+            this.attachedSensors = new ISensor[(sensors.Length)];
         }
 
-        public void AttachingSensors(ISensor newSensor)
+        public void AttachingSensors(ISensor newSensor, int index)
         {
-            attachedSensors.Add(newSensor);
+            attachedSensors[index] = newSensor;
         }
     }
 }
