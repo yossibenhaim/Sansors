@@ -70,6 +70,10 @@ namespace Sensors
             return true; 
         }
 
+        public static void RemovingClippedSensor(string name)
+        {
+
+        }
 
     }
 }

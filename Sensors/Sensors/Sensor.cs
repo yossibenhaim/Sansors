@@ -12,7 +12,9 @@ namespace Sensors
 
         public bool active { get; set; } = false;
 
-        public void SetActive()
+        public string pinnedTo;
+
+        public virtual void SetActive()
         {
             active = true;
         }

@@ -13,5 +13,7 @@ namespace Sensors
 
         bool active { get; set; }
 
+        string pinnedTo { get; set; }
+
     }
 }
