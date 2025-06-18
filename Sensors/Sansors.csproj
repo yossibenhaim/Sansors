@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Agents\Agent.cs" />
     <Compile Include="Manager\Printer.cs" />
+    <Compile Include="Manager\SquadLeader.cs" />
     <Compile Include="Sensors\AudioSensor.cs" />
     <Compile Include="Agents\FootAgent.cs" />
     <Compile Include="Manager\HelpManager.cs" />
