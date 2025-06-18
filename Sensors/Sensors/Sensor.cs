@@ -29,7 +29,7 @@ namespace Sensors
 
             this.countActive++;
             
-            if (HelpManager.CheckIfSensorExits(this.pinnedTo, this.sensorName))
+            if (HelpManager.CheckingIfTheSensorIsWeak(this.pinnedTo, this.sensorName))
             { 
                 active = true;
             }

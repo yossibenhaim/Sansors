@@ -41,36 +41,62 @@ namespace Sensors
 
         }
 
+        public bool CheckingIfTheSensorIsWorkingProperly(IAgent agent,string sensorName)
+        {
+            Dictionary<string, int> dictWeaknesses = new Dictionary<string, int>(agent.weaknessesSensorsDict);
+
+            Dictionary<string, int> attachedSensors = HelpManager.CreatingDictionaryFromAttachedSensors(agent);
+
+            try
+            {
+                if (dictWeaknesses[sensorName] == attachedSensors[sensorName])
+                    {
+                        return true;
+                    }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+                     
+        }
+        public bool CheckingIfTheGameComplete(IAgent agent)
+        {
+            if (FindingTheNumberOfCorrectSensorsConnected(agent) == FindingTheNumberOfWeaknesses(agent))
+            {
+                foreach (ISensor sensor in agent.attachedSensors)
+                {
+                    if (CheckingIfTheSensorIsWorkingProperly(agent,sensor.sensorName))
+                    {
+            
+                        Printer.PrintCompleteGame();
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
         public int FindingTheNumberOfCorrectSensorsConnected(IAgent agent)
         {
-            int countSensorsAttached = 0;
-            Dictionary<string, int> DictWeaknesses = new Dictionary<string, int>(agent.weaknessesSensorsDict);
-
+            int countCorrectSensor = 0;
             foreach (ISensor sensor in agent.attachedSensors)
             {
                 if (sensor.active)
                 {
-                    if (HelpManager.CheckIfSensorExits(agent, sensor.sensorName))
-                    {
-                        if (agent.weaknessesSensorsDict[sensor.sensorName] > 0)
-                        {
-                            countSensorsAttached ++;
-                            DictWeaknesses[sensor.sensorName] --;
-                        }
-                    }
+                    countCorrectSensor++;
                 }
             }
-            return countSensorsAttached;
-            
+            return countCorrectSensor;
         }
-        public bool CheckingIfTheGameComplete(IAgent agent)
+        public int FindingTheNumberOfWeaknesses(IAgent agent)
         {
-            if (FindingTheNumberOfCorrectSensorsConnected(agent) == HelpManager.CountingTheNumberOfWeaknessesInAnAgent(agent))
+            int countWeaknesses = 0;
+            foreach (int countOfSensor in agent.weaknessesSensorsDict.Values)
             {
-                Printer.PrintCompleteGame();
-                return false;
+                countWeaknesses += countOfSensor;   
             }
-            return true; 
+            return countWeaknesses;
         }
 
         public static void RemovingClippedSensor(ISensor sensor, IAgent agent)
